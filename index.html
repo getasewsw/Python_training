@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Study Guide</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .fixed-top {
+            z-index: 1020;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            padding-top: 56px; /* Adjust to account for fixed navbar height */
+        }
+        .sidebar {
+            min-width: 200px;
+            max-width: 250px;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-right: 1px solid #ddd;
+        }
+        .main-content {
+            flex: 1;
+            padding: 1rem;
+        }
+        .sidebar a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #e9ecef;
+        }
+
+        
+        /* style for the internal content */
+        
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #c7254e;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        .note {
+            background: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">Brand Name</a>
+            <div class="mx-auto">
+                <span>Cyber Computer Training School</span>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Quizzes</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="content">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <h5>Contents</h5>
+            <a href="#" onclick="loadContent('introduction')">Introduction to Computer Programming</a>
+            <a href="#" onclick="loadContent('python_intro')">Introduction to Python</a>
+            <a href="#" onclick="loadContent('installation')">Installation</a>
+            <a href="#" onclick="loadContent('variable_datatypes')">Variables and Data Types</a>
+            <a href="#" onclick="loadContent('conditional_sentence')">IF Elif Conditions</a>
+            <a href="#" onclick="loadContent('arithmetic_operators')">Arithmetic Operators</a>
+            <a href="#" onclick="loadContent('loops')">Loops in Python</a>
+            <a href="#" onclick="loadContent('foreloop')">For loop over sequence</a>
+            <a href="#" onclick="loadContent('functions')">Functions</a>
+            <!-- Add more links here -->
+        </div>
+
+        <!-- Main Content Display -->
+        <div class="main-content" id="main-content">
+            <!-- Content will be loaded here based on sidebar selection -->
+            <h2>Welcome to the Python Programming Study Guide</h2>
+            <p>Select a topic from the sidebar to get started.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to load content dynamically based on sidebar clicks
+        function loadContent(topic) {
+            let contentElement = document.getElementById('main-content');
+            switch (topic) {
+                case 'python_intro':
+                contentElement.innerHTML = `
+                    <section>
+                        <h2>Step 1: Python Variables</h2>
+                        <p>In Python, variables are used to store data values. Unlike some other programming languages, Python has no command for declaring a variable. A variable is created the moment you first assign a value to it.</p>
+                        <h3>1. Variable Naming Rules</h3>
+                        <p>Python variables follow these naming rules:</p>
+                        <ul>
+                            <li>A variable name must start with a letter or the underscore character.</li>
+                            <li>A variable name cannot start with a number.</li>
+                            <li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).</li>
+                            <li>Variable names are case-sensitive (age, Age, and AGE are three different variables).</li>
+                        </ul>
+                        <h3>2. Assigning Values to Variables</h3>
+                        <p>Python uses the equals sign (<code>=</code>) to assign values to variables. You do not need to declare variables before using them or declare their data types.</p>
+                        <h4>Example:</h4>
+                        <pre><code># Assigning values to variables
+                    name = "John Doe"
+                    age = 30
+                    is_student = False
+
+                    # Printing variables
+                    print(name)        # Output: John Doe
+                    print(age)         # Output: 30
+                    print(is_student)  # Output: False</code></pre>
+                        <h3>3. Variable Types</h3>
+                        <p>Python variables can store different types of data, including integers, floats, strings, and booleans.</p>
+                        <h4>Example:</h4>
+                        <pre><code># Different variable types
+                    number = 10           # Integer
+                    pi = 3.14             # Float
+                    message = "Hello"     # String
+                    is_valid = True       # Boolean
+
+                    print(number, pi, message, is_valid)  # Output: 10 3.14 Hello True</code></pre>
+                        <h3>4. Dynamic Typing</h3>
+                        <p>Python uses dynamic typing, meaning you can reassign variables to different data types.</p>
+                        <h4>Example:</h4>
+                        <pre><code>x = 10    # x is an integer
+                    print(x)    # Output: 10
+
+                    x = "Python"    # Now x is a string
+                    print(x)    # Output: Python</code></pre>
+                        <div class="note">
+                            <p><strong>Note:</strong> Python is case-sensitive. This means that <code>age</code>, <code>Age</code>, and <code>AGE</code> are three different variables.</p>
+                        </div>
+                    </section>`;
+                    break;
+
+                case 'introduction':
+                contentElement.innerHTML = `
+                            <section>
+                                <h2>Introduction to Computer Programming</h2>
+                                <p>Computer programming is the process of designing and building an executable computer program to accomplish a specific computing task.</p>
+                                <h3>What is Programming?</h3>
+                                <p>Programming is the act of writing computer programs, which are a sequence of instructions written using a Computer Programming Language to perform a specified task by the computer.</p>
+                                <h3>1. Why Learn Programming?</h3>
+                                <p>Programming allows you to solve problems, automate tasks, and create software applications that can be used to perform specific tasks on computers, mobile devices, and the web.</p>
+                                <ul>
+                                    <li>It develops problem-solving skills and logical thinking.</li>
+                                    <li>It opens up career opportunities in software development and engineering.</li>
+                                    <li>It enables you to create your own software applications.</li>
+                                </ul>
+                                <h3>2. Programming Languages</h3>
+                                <p>There are many programming languages available for different types of tasks and applications. Some popular programming languages include:</p>
+                                <ul>
+                                    <li><strong>Python</strong>: Known for its simplicity and readability, often used for web development, data analysis, and automation.</li>
+                                    <li><strong>JavaScript</strong>: Widely used for building interactive web applications.</li>
+                                    <li><strong>Java</strong>: Used for building platform-independent applications.</li>
+                                    <li><strong>C++</strong>: Used for system/application software, drivers, client-server applications, and embedded firmware.</li>
+                                </ul>
+                                <h3>3. Basic Concepts of Programming</h3>
+                                <p>Understanding basic programming concepts is essential for becoming a proficient programmer. These concepts include:</p>
+                                <ul>
+                                    <li><strong>Variables</strong>: Storage locations in memory with a symbolic name (identifier) that contains some known or unknown quantity or information, a value.</li>
+                                    <li><strong>Control Structures</strong>: Instructions that determine the flow of control in a program (e.g., loops and conditionals).</li>
+                                    <li><strong>Data Structures</strong>: Ways to organize and store data for efficient access and modification (e.g., arrays, lists, and dictionaries).</li>
+                                    <li><strong>Syntax and Semantics</strong>: Syntax is the set of rules that defines the combinations of symbols that are considered to be correctly structured programs in a language. Semantics is the meaning associated with syntactically correct strings of symbols with no static semantic error.</li>
+                                </ul>
+                                <h4>Example of a Simple Program:</h4>
+                                <pre><code># Python example to print "Hello, World!"
+                            print("Hello, World!")</code></pre>
+                                <div class="note">
+                                    <p><strong>Note:</strong> The syntax and structure of programming languages can vary greatly, but the core concepts are often similar across different languages.</p>
+                                </div>
+                            </section>`;
+                    break;
+
+                    case 'installation':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>Installing Python</h2>
+                        <p>To start programming in Python, you need to have Python installed on your computer. Follow the steps below to install Python and set up your development environment:</p>
+                        <h3>Step 1: Download Python</h3>
+                        <p>Visit the official Python website to download the latest version of Python:</p>
+                        <ul>
+                            <li>Go to the <a href="https://www.python.org/downloads/" target="_blank">Python Downloads</a> page.</li>
+                            <li>Select the appropriate installer for your operating system (Windows, macOS, or Linux).</li>
+                            <li>Download the installer to your computer.</li>
+                        </ul>
+                        <h3>Step 2: Install Python</h3>
+                        <p>Once the download is complete, run the installer and follow these steps:</p>
+                        <ul>
+                            <li>Open the installer file.</li>
+                            <li>Make sure to check the box that says "Add Python to PATH" before clicking "Install Now".</li>
+                            <li>Follow the prompts to complete the installation.</li>
+                            <li>Once the installation is finished, close the installer.</li>
+                        </ul>
+                        <h3>Step 3: Verify the Installation</h3>
+                        <p>To ensure that Python is installed correctly, follow these steps:</p>
+                        <ul>
+                            <li>Open a terminal or command prompt window.</li>
+                            <li>Type <code>python --version</code> and press Enter.</li>
+                            <li>You should see the version of Python that you installed. For example, <code>Python 3.x.x</code>.</li>
+                        </ul>
+                        <h3>Step 4: Install a Code Editor</h3>
+                        <p>To write and edit Python code, you'll need a code editor. Some popular options include:</p>
+                        <ul>
+                            <li><strong>Visual Studio Code</strong>: A free, open-source code editor from Microsoft. Download it <a href="https://code.visualstudio.com/" target="_blank">here</a>.</li>
+                            <li><strong>PyCharm</strong>: A Python-specific IDE from JetBrains, available in free and paid versions. Download it <a href="https://www.jetbrains.com/pycharm/" target="_blank">here</a>.</li>
+                            <li><strong>Atom</strong>: A free, open-source text editor from GitHub. Download it <a href="https://atom.io/" target="_blank">here</a>.</li>
+                        </ul>
+                        <h3>Step 5: Write Your First Python Program</h3>
+                        <p>After installing Python and a code editor, you can write your first Python program:</p>
+                        <ul>
+                            <li>Open your code editor.</li>
+                            <li>Create a new file and save it with a <code>.py</code> extension (e.g., <code>hello.py</code>).</li>
+                            <li>Type the following code:</li>
+                        </ul>
+                        <pre><code># Simple Python program to print "Hello, World!"
+                    print("Hello, World!")</code></pre>
+                        <ul>
+                            <li>Save the file and run it using the command <code>python hello.py</code> in your terminal or command prompt.</li>
+                            <li>You should see the output: <code>Hello, World!</code></li>
+                        </ul>
+                        <div class="note">
+                            <p><strong>Note:</strong> Ensure you have installed the latest version of Python for access to the newest features and updates.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'variables':
+                    contentElement.innerHTML = '<h2>Variables</h2><p>Variables are used to store data...</p>';
+                    break;
+                case 'string_type':
+                    contentElement.innerHTML = `
+                    <section>
+                        <h2>String Types in Python</h2>
+                        <p>Strings in Python are sequences of characters enclosed in quotes. They are one of the most commonly used data types and provide various methods for manipulation and formatting.</p>
+                        <h3>String Concatenation</h3>
+                        <p>Strings can be concatenated using the <code>+</code> operator:</p>
+                        <pre><code># Concatenating strings
+                    first_name = "John"
+                    last_name = "Doe"
+                    full_name = first_name + " " + last_name
+                    print(full_name)  # Output: John Doe
+                    </code></pre>
+                        <h3>String Formatting</h3>
+                        <p>Python provides several methods to format strings:</p>
+                        <h4>1. % Operator</h4>
+                        <p>The <code>%</code> operator is an older method for formatting strings. It works similarly to printf-style formatting in C:</p>
+                        <pre><code># Using % operator
+                    name = "Alice"
+                    age = 30
+                    formatted_string = "Name: %s, Age: %d" % (name, age)
+                    print(formatted_string)  # Output: Name: Alice, Age: 30
+                    </code></pre>
+                        <h4>2. str.format()</h4>
+                        <p>The <code>str.format()</code> method provides more flexibility and is often preferred over the % operator:</p>
+                        <pre><code># Using str.format()
+                    name = "Bob"
+                    age = 25
+                    formatted_string = "Name: {}, Age: {}".format(name, age)
+                    print(formatted_string)  # Output: Name: Bob, Age: 25
+                    </code></pre>
+                        <h4>3. f-Strings (Formatted String Literals)</h4>
+                        <p>f-Strings, introduced in Python 3.6, offer a concise and readable way to embed expressions inside string literals:</p>
+                        <pre><code># Using f-Strings
+                    name = "Carol"
+                    age = 28
+                    formatted_string = f"Name: {name}, Age: {age}"
+                    print(formatted_string)  # Output: Name: Carol, Age: 28
+                    </code></pre>
+                        <h4>4. str.join()</h4>
+                        <p>The <code>str.join()</code> method is used to concatenate elements of an iterable with a specified separator:</p>
+                        <pre><code># Using str.join()
+                    words = ["Python", "is", "fun"]
+                    sentence = " ".join(words)
+                    print(sentence)  # Output: Python is fun
+                    </code></pre>
+                        <h3>Common String Methods</h3>
+                        <p>In addition to formatting, Python strings come with a variety of useful methods:</p>
+                        <ul>
+                            <li><strong>upper()</strong>: Converts all characters to uppercase.</li>
+                            <li><strong>lower()</strong>: Converts all characters to lowercase.</li>
+                            <li><strong>strip()</strong>: Removes leading and trailing whitespace.</li>
+                            <li><strong>replace(old, new)</strong>: Replaces occurrences of <code>old</code> with <code>new</code>.</li>
+                            <li><strong>split(separator)</strong>: Splits the string into a list of substrings based on the separator.</li>
+                        </ul>
+                        <h4>Example</h4>
+                        <pre><code># Using common string methods
+                    text = "   Python Programming   "
+                    print(text.upper())   # Output:    PYTHON PROGRAMMING   
+                    print(text.lower())   # Output:    python programming   
+                    print(text.strip())   # Output: Python Programming
+                    print(text.replace("Python", "Java"))  # Output:    Java Programming   
+                    print(text.split())   # Output: ['Python', 'Programming']
+                    </code></pre>
+                        <div class="note">
+                            <p><strong>Note:</strong> String formatting methods are essential for creating dynamic and user-friendly output in your programs.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'loops':
+                    contentElement.innerHTML = `
+                    <section>
+                        <h2>Loops in Python</h2>
+                        <p>Loops are used in Python to execute a block of code repeatedly for a specified number of times or while a condition is met. They are a fundamental part of programming, allowing for repetitive operations without writing redundant code.</p>
+                        <h3>Example Without Loops</h3>
+                        <p>Consider the task of printing each item in a list. Without using loops, you would need to write repetitive code:</p>
+                        <pre><code># Without using loops
+                    print("Apple")
+                    print("Banana")
+                    print("Cherry")
+                    print("Date")
+                    print("Elderberry")
+                    </code></pre>
+                        <p>As you can see, this method requires writing each <code>print</code> statement individually. Loops simplify this task significantly.</p>
+                        <h3>For Loop</h3>
+                        <p>The <code>for</code> loop in Python is used to iterate over a sequence (such as a list, tuple, string, or range). It allows you to execute a block of code for each item in the sequence.</p>
+                        <h4>Syntax</h4>
+                        <pre><code>for variable in sequence:
+                        # code block to execute
+                    </code></pre>
+                        <h4>Example</h4>
+                        <p>Here’s how you can use a <code>for</code> loop to print each item in a list:</p>
+                        <pre><code># Using a for loop
+                    items = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]
+                    for item in items:
+                        print(item)
+                    # Output:
+                    # Apple
+                    # Banana
+                    # Cherry
+                    # Date
+                    # Elderberry
+                    </code></pre>
+                        <h3>While Loop</h3>
+                        <p>The <code>while</code> loop in Python repeatedly executes a block of code as long as a specified condition is true. It is useful when the number of iterations is not known beforehand.</p>
+                        <h4>Syntax</h4>
+                        <pre><code>while condition:
+                        # code block to execute
+                    </code></pre>
+                        <h4>Example</h4>
+                        <p>Here’s how you can use a <code>while</code> loop to print each item in a list:</p>
+                        <pre><code># Using a while loop
+                    items = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]
+                    index = 0
+                    while index < len(items):
+                        print(items[index])
+                        index += 1
+                    # Output:
+                    # Apple
+                    # Banana
+                    # Cherry
+                    # Date
+                    # Elderberry
+                    </code></pre>
+                    <div class="note">
+                        <p><strong>Note:</strong> Use loops wisely to avoid infinite loops that can crash your program or system.</p>
+                    </div>
+                        <h3>Loop Control Statements</h3>
+                        <p>Python provides loop control statements to alter the normal flow of loops:</p>
+                        <ul>
+                            <li><strong>break</strong>: Terminates the loop prematurely.</li>
+                            <li><strong>continue</strong>: Skips the current iteration and moves to the next iteration.</li>
+                        </ul>
+                        <h4>Example</h4>
+                        <pre><code># Using break statement
+                    for num in range(10):
+                        if num == 5:
+                            break
+                        print(num)  # Output: 0 1 2 3 4
+
+                    # Using continue statement
+                    for num in range(10):
+                        if num % 2 == 0:
+                            continue
+                        print(num)  # Output: 1 3 5 7 9
+                    </code></pre>
+
+                        <h2>Lists and Tuples in Python</h2>
+                        <p>Lists and tuples are two types of data structures in Python used to store collections of items. They are both sequence types but have some key differences.</p>
+                        
+                        <h3>1. Definition</h3>
+                        <p><strong>List:</strong> A list is a mutable sequence, which means you can change its contents. Lists are defined using square brackets <code>[]</code>.</p>
+                        <p><strong>Tuple:</strong> A tuple is an immutable sequence, which means its contents cannot be changed after creation. Tuples are defined using parentheses <code>()</code>.</p>
+                        
+                        <h3>2. Differences Between Lists and Tuples</h3>
+                        <ul>
+                            <li><strong>Mutability:</strong> Lists are mutable, whereas tuples are immutable.</li>
+                            <li><strong>Syntax:</strong> Lists use square brackets <code>[]</code>, while tuples use parentheses <code>()</code>.</li>
+                            <li><strong>Use Cases:</strong> Lists are used when you need a dynamic collection, while tuples are used for fixed collections or to ensure data integrity.</li>
+                            <li><strong>Performance:</strong> Tuples are generally faster than lists due to their immutability.</li>
+                        </ul>
+                        
+                        <h3>3. Examples of Built-in Functions</h3>
+                        <p>Both lists and tuples support various built-in functions and methods that allow you to manipulate and access data. Here are some examples:</p>
+                        
+                        <h4>List Example</h4>
+                        <pre><code># List example with built-in functions
+                    fruits = ['apple', 'banana', 'cherry']
+
+                    # Append an item
+                    fruits.append('date')
+                    print(fruits)  # Output: ['apple', 'banana', 'cherry', 'date']
+
+                    # Remove an item
+                    fruits.remove('banana')
+                    print(fruits)  # Output: ['apple', 'cherry', 'date']
+
+                    # Sort the list
+                    fruits.sort()
+                    print(fruits)  # Output: ['apple', 'cherry', 'date']
+
+                    # Get the length of the list
+                    length = len(fruits)
+                    print(f"The list has {length} items.")  # Output: The list has 3 items.
+                    </code></pre>
+                        
+                        <h4>Tuple Example</h4>
+                        <pre><code># Tuple example with built-in functions
+                    colors = ('red', 'green', 'blue')
+
+                    # Accessing tuple elements
+                    first_color = colors[0]
+                    print(first_color)  # Output: red
+
+                    # Count occurrences of an element
+                    count_green = colors.count('green')
+                    print(f"The color green appears {count_green} time(s).")  # Output: The color green appears 1 time(s).
+
+                    # Get the index of an element
+                    index_blue = colors.index('blue')
+                    print(f"The color blue is at index {index_blue}.")  # Output: The color blue is at index 2.
+
+                    # Length of the tuple
+                    length = len(colors)
+                    print(f"The tuple has {length} items.")  # Output: The tuple has 3 items.
+                    </code></pre>
+                        <div class="note">
+                            <p><strong>Note:</strong> Since tuples are immutable, operations that modify the collection (like <code>append()</code> or <code>remove()</code>) are not available for tuples.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+
+                case 'foreloop':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>For Loop in Python</h2>
+                        <p>The <code>for</code> loop in Python is used to iterate over a sequence (such as a list, string, range, or tuple) and execute a block of code for each item in the sequence. It is a powerful tool for repetitive tasks.</p>
+                        
+                        <h3>Loop Over a String</h3>
+                        <p>When looping over a string, the <code>for</code> loop iterates over each character in the string:</p>
+                        <pre><code># Loop over a string
+                    word = "Python"
+                    for letter in word:
+                        print(letter)
+                    # Output:
+                    # P
+                    # y
+                    # t
+                    # h
+                    # o
+                    # n
+                    </code></pre>
+                        
+                        <h3>Loop Over a List</h3>
+                        <p>The <code>for</code> loop can also be used to iterate over each element in a list:</p>
+                        <pre><code># Loop over a list
+                    fruits = ["Apple", "Banana", "Cherry", "Date"]
+                    for fruit in fruits:
+                        print(fruit)
+                    # Output:
+                    # Apple
+                    # Banana
+                    # Cherry
+                    # Date
+                    </code></pre>
+                        
+                        <h3>Loop Over a Range</h3>
+                        <p>The <code>range()</code> function generates a sequence of numbers, which can be used with the <code>for</code> loop to repeat actions a specific number of times:</p>
+                        <pre><code># Loop over a range
+                    for number in range(5):
+                        print(number)
+                    # Output:
+                    # 0
+                    # 1
+                    # 2
+                    # 3
+                    # 4
+                    </code></pre>
+                        
+                        <h3>Loop Over a Tuple</h3>
+                        <p>Similarly, you can loop over elements in a tuple:</p>
+                        <pre><code># Loop over a tuple
+                    coordinates = (10, 20, 30)
+                    for coord in coordinates:
+                        print(coord)
+                    # Output:
+                    # 10
+                    # 20
+                    # 30
+                    </code></pre>
+                        
+                        <h3>Nested For Loops</h3>
+                        <p>For loops can be nested inside other for loops to handle more complex scenarios:</p>
+                        <pre><code># Nested for loops
+                    for i in range(3):
+                        for j in range(3):
+                            print(f"({i}, {j})")
+                    # Output:
+                    # (0, 0)
+                    # (0, 1)
+                    # (0, 2)
+                    # (1, 0)
+                    # (1, 1)
+                    # (1, 2)
+                    # (2, 0)
+                    # (2, 1)
+                    # (2, 2)
+                    </code></pre>
+                        
+                        <div class="note">
+                            <p><strong>Note:</strong> The <code>for</code> loop is highly versatile and can be used with various data types to simplify iteration and repetitive tasks in your code.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'variable_datatypes':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>Variable Data Types in Python</h2>
+                        <p>In Python, variables can hold values of different data types. Understanding these data types is fundamental to programming in Python, as they determine the kind of data a variable can store and the operations you can perform on it.</p>
+                        
+                        <h3>1. Integers</h3>
+                        <p>Integers are whole numbers without a decimal point. They can be positive, negative, or zero:</p>
+                        <pre><code># Integer examples
+                    num1 = 10
+                    num2 = -3
+                    num3 = 0
+                    print(num1, num2, num3)  # Output: 10 -3 0
+                    </code></pre>
+                        
+                        <h3>2. Floats</h3>
+                        <p>Floats are numbers that include a decimal point. They are used to represent real numbers:</p>
+                        <pre><code># Float examples
+                    pi = 3.14159
+                    temperature = -4.5
+                    print(pi, temperature)  # Output: 3.14159 -4.5
+                    </code></pre>
+                        
+                        <h3>3. Strings</h3>
+                        <p>Strings are sequences of characters enclosed in quotes. They can include letters, numbers, and special characters:</p>
+                        <pre><code># String examples
+                    greeting = "Hello, World!"
+                    name = 'Alice'
+                    print(greeting, name)  # Output: Hello, World! Alice
+                    </code></pre>
+                        
+                        <h3>4. Booleans</h3>
+                        <p>Booleans represent truth values and can be either <code>True</code> or <code>False</code>:</p>
+                        <pre><code># Boolean examples
+                    is_active = True
+                    is_logged_in = False
+                    print(is_active, is_logged_in)  # Output: True False
+                    </code></pre>
+                        
+                        <h3>5. Lists</h3>
+                        <p>Lists are ordered collections of items that can be of different data types. Lists are mutable, meaning their contents can be changed:</p>
+                        <pre><code># List examples
+                    colors = ["Red", "Green", "Blue"]
+                    mixed_list = [1, "Python", 3.14, True]
+                    print(colors)
+                    print(mixed_list)  # Output: ['Red', 'Green', 'Blue'] [1, 'Python', 3.14, True]
+                    </code></pre>
+                        
+                        <h3>6. Tuples</h3>
+                        <p>Tuples are similar to lists but are immutable, meaning their contents cannot be changed once defined:</p>
+                        <pre><code># Tuple examples
+                    coordinates = (10, 20)
+                    info = ("Alice", 30, "Engineer")
+                    print(coordinates)
+                    print(info)  # Output: (10, 20) ('Alice', 30, 'Engineer')
+                    </code></pre>
+                        
+                        <h3>7. Dictionaries</h3>
+                        <p>Dictionaries are collections of key-value pairs. Keys must be unique, and values can be of any data type:</p>
+                        <pre><code># Dictionary examples
+                    person = {"name": "Bob", "age": 25, "city": "New York"}
+                    print(person)
+                    print(person["name"])  # Output: {'name': 'Bob', 'age': 25, 'city': 'New York'} Bob
+                    </code></pre>
+                        
+                        <h3>8. Sets</h3>
+                        <p>Sets are unordered collections of unique items. They are useful for operations that involve uniqueness:</p>
+                        <pre><code># Set examples
+                    numbers = {1, 2, 3, 4, 5}
+                    unique_fruits = {"Apple", "Banana", "Cherry"}
+                    print(numbers)
+                    print(unique_fruits)  # Output: {1, 2, 3, 4, 5} {'Apple', 'Banana', 'Cherry'}
+                    </code></pre>
+                        
+                        <div class="note">
+                            <p><strong>Note:</strong> Python's dynamic typing allows variables to change their type during execution, which provides flexibility but requires careful handling.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'conditional_sentence':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>Conditional Statements in Python</h2>
+                        <p>Conditional statements allow you to execute different blocks of code based on certain conditions. In Python, you can use <code>if</code> and <code>elif</code> to control the flow of your program based on conditions.</p>
+                        
+                        <h3>1. Using <code>if</code> Statement</h3>
+                        <p>The <code>if</code> statement evaluates a condition and executes a block of code if the condition is <code>True</code>.</p>
+                        <pre><code># If statement example
+                    age = int(input("Enter your age: "))
+
+                    if age >= 18:
+                        print("You are an adult.")
+                    </code></pre>
+                        
+                        <h3>2. Using <code>elif</code> Statement</h3>
+                        <p>The <code>elif</code> (short for "else if") statement allows you to check additional conditions if the previous <code>if</code> condition was <code>False</code>. You can have multiple <code>elif</code> statements following an <code>if</code> statement.</p>
+                        <pre><code># Elif statement example
+                    score = int(input("Enter your score: "))
+
+                    if score >= 90:
+                        print("Grade: A")
+                    elif score >= 80:
+                        print("Grade: B")
+                    elif score >= 70:
+                        print("Grade: C")
+                    elif score >= 60:
+                        print("Grade: D")
+                    else:
+                        print("Grade: F")
+                    </code></pre>
+                        
+                        <h3>3. Combining <code>if</code> and <code>elif</code></h3>
+                        <p>You can combine <code>if</code> and <code>elif</code> statements to handle more complex conditions:</p>
+                        <pre><code># Combined if and elif example
+                    temperature = float(input("Enter the temperature in Celsius: "))
+
+                    if temperature > 30:
+                        print("It's a hot day.")
+                    elif temperature >= 20:
+                        print("It's a warm day.")
+                    elif temperature >= 10:
+                        print("It's a cool day.")
+                    else:
+                        print("It's a cold day.")
+                    </code></pre>
+                        
+                        <div class="note">
+                            <p><strong>Note:</strong> Ensure proper indentation for <code>if</code> and <code>elif</code> blocks as Python relies on indentation to define code blocks.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'arithmetic_operators':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>Arithmetic Operators in Python</h2>
+                        <p>Arithmetic operators are used to perform mathematical operations such as addition, subtraction, multiplication, and division. Python supports the following arithmetic operators:</p>
+                        
+                        <ul>
+                            <li><code>+</code> : Addition</li>
+                            <li><code>-</code> : Subtraction</li>
+                            <li><code>*</code> : Multiplication</li>
+                            <li><code>/</code> : Division</li>
+                            <li><code>%</code> : Modulus</li>
+                            <li><code>**</code> : Exponentiation</li>
+                            <li><code>//</code> : Floor Division</li>
+                        </ul>
+                        
+                        <h3>Simple Calculator</h3>
+                        <p>Below is an example of a simple calculator that performs basic arithmetic operations based on user input:</p>
+                        <pre><code># Simple Calculator Program
+
+                    # Get user input for the first number
+                    num1 = float(input("Enter the first number: "))
+
+                    # Get user input for the operator
+                    operator = input("Enter the operator (+, -, *, /, %, **, //): ")
+
+                    # Get user input for the second number
+                    num2 = float(input("Enter the second number: "))
+
+                    # Perform the calculation based on the operator
+                    if operator == '+':
+                        result = num1 + num2
+                    elif operator == '-':
+                        result = num1 - num2
+                    elif operator == '*':
+                        result = num1 * num2
+                    elif operator == '/':
+                        result = num1 / num2
+                    elif operator == '%':
+                        result = num1 % num2
+                    elif operator == '**':
+                        result = num1 ** num2
+                    elif operator == '//':
+                        result = num1 // num2
+                    else:
+                        result = "Invalid operator"
+
+                    # Display the result
+                    print("The result is:", result)
+                    </code></pre>
+                    <code><h3>Exercise </h3></code>
+                    <code><p>Print all even Numbers less than 15 </p></code> 
+                        
+                        <div class="note">
+                            <p><strong>Note:</strong> Ensure that you handle exceptions for cases like division by zero or invalid input to make the calculator more robust.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                case 'functions':
+                        contentElement.innerHTML = `
+                    <section>
+                        <h2>Functions in Python</h2>
+                        <p>Functions are reusable blocks of code that perform a specific task. They help organize code and make it more modular and readable. In Python, functions are defined using the <code>def</code> keyword.</p>
+                        
+                        <h3>1. Defining a Function</h3>
+                        <p>You can define a function using the <code>def</code> keyword, followed by the function name and parentheses <code>()</code>. A function can have parameters, which are variables that accept values passed to the function.</p>
+                        <pre><code># Function definition
+                    def greet(name):
+                        """Display a greeting message."""
+                        print(f"Hello, {name}!")
+
+                    # Calling the function
+                    greet("Alice")  # Output: Hello, Alice!
+                    </code></pre>
+                        
+                        <h3>2. Function with Return Value</h3>
+                        <p>Functions can return a value using the <code>return</code> statement. The returned value can be stored in a variable or used directly in expressions.</p>
+                        <pre><code># Function with return value
+                    def add(a, b):
+                        """Return the sum of two numbers."""
+                        return a + b
+
+                    # Using the return value
+                    result = add(3, 5)
+                    print(f"The sum is: {result}")  # Output: The sum is: 8
+                    </code></pre>
+                        
+                        <h3>3. Functions with Multiple Parameters</h3>
+                        <p>Functions can accept multiple parameters, allowing you to pass several arguments to perform operations.</p>
+                        <pre><code># Function with multiple parameters
+                    def multiply(x, y):
+                        """Return the product of two numbers."""
+                        return x * y
+
+                    product = multiply(4, 7)
+                    print(f"The product is: {product}")  # Output: The product is: 28
+                    </code></pre>
+                        
+                        <h3>4. Default Parameter Values</h3>
+                        <p>You can specify default parameter values for a function. If the function is called without an argument for a parameter with a default value, the default value is used.</p>
+                        <pre><code># Function with default parameter value
+                    def greet_user(name, greeting="Hello"):
+                        """Display a greeting message with a default greeting."""
+                        print(f"{greeting}, {name}!")
+
+                    greet_user("Bob")           # Output: Hello, Bob!
+                    greet_user("Eve", "Hi")     # Output: Hi, Eve!
+                    </code></pre>
+
+                        <div class="note">
+                            <p><strong>Note:</strong> Use function docstrings (enclosed in triple quotes) to describe what a function does. This improves code readability and helps with documentation.</p>
+                        </div>
+                    </section>`;
+                        break;
+
+                // Add more cases for other topics
+                default:
+                    contentElement.innerHTML = '<h2>Welcome to the Python Programming Study Guide</h2><p>Select a topic from the sidebar to get started.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
+
